@@ -10,7 +10,7 @@ from .operations import operations, _check_health
 logger = get_logger("graylog")
 
 
-class VirusTotalPremium(Connector):
+class Graylog(Connector):
     def execute(self, config, operation, params, **kwargs):
         logger.debug("Invoking {0} Operation".format(operation))
         try:
