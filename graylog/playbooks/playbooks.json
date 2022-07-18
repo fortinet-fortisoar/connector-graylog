@@ -1,0 +1,786 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@type": "WorkflowCollection",
+      "name": "Sample - Graylog - 1.0.0",
+      "description": "Graylog is a leading centralized log management solution for capturing, storing, and enabling real-time analysis of terabytes of machine data. This connector facilitates automated operations related to alerts, clusters, events, and search messages.",
+      "visible": true,
+      "image": null,
+      "uuid": "0096c7e4-a695-45a6-8ee7-1103852ca646",
+      "id": 150,
+      "deletedAt": null,
+      "importedBy": [],
+      "recordTags": [],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Search Messages in Absolute Timerange",
+          "aliasName": null,
+          "tag": null,
+          "description": "Search for a events in Graylog based on the input parameters that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1657797555,
+          "collection": "/api/3/workflow_collections/0096c7e4-a695-45a6-8ee7-1103852ca646",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/fb051876-ac69-4783-8f9d-717d3f85cf61",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Search Messages in Absolute Timerange",
+              "description": null,
+              "arguments": {
+                "name": "Graylog",
+                "config": "",
+                "params": {
+                  "sort": true,
+                  "limit": 20,
+                  "query": "sample query",
+                  "fields": "",
+                  "filter": "",
+                  "offset": 0,
+                  "decorate": true,
+                  "end_time": "2022-08-24T18:30:00.000Z",
+                  "start_time": "2022-07-14T18:30:00.000Z"
+                },
+                "version": "1.0.0",
+                "connector": "graylog",
+                "operation": "search_absolute",
+                "operationTitle": "Search Messages in Absolute Timerange",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "c0eb4905-135f-41ec-915b-cb012a8b16a1"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "b1f98ac5-6ff7-4613-93be-67bc75b63495",
+                "title": "Graylog: Search Messages in Absolute Timerange",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "fb051876-ac69-4783-8f9d-717d3f85cf61"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Search Messages in Absolute Timerange",
+              "targetStep": "/api/3/workflow_steps/c0eb4905-135f-41ec-915b-cb012a8b16a1",
+              "sourceStep": "/api/3/workflow_steps/fb051876-ac69-4783-8f9d-717d3f85cf61",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "25102267-53ec-4dd7-b2d0-3fa960b998ce"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "10d3e6a4-15c9-4a90-9c56-2c2720896682",
+          "id": 1299,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "graylog"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Cluster Node JVM",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieve a JVM information of the node from Graylog based on the node ID you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1657797241,
+          "collection": "/api/3/workflow_collections/0096c7e4-a695-45a6-8ee7-1103852ca646",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/c62c8798-edd3-4995-83c9-46cf42bf5cfb",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Cluster Node JVM",
+              "description": null,
+              "arguments": {
+                "name": "Graylog",
+                "config": "",
+                "params": {
+                  "id": "1"
+                },
+                "version": "1.0.0",
+                "connector": "graylog",
+                "operation": "get_cluster_node_jvm",
+                "operationTitle": "Get Cluster Node JVM",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "7853b270-30ac-4fc0-8a46-c4b581d930b5"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "7b3eb109-4916-48d7-a9f3-e36a8f305ef5",
+                "title": "Graylog: Get Cluster Node JVM",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "c62c8798-edd3-4995-83c9-46cf42bf5cfb"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Cluster Node JVM",
+              "targetStep": "/api/3/workflow_steps/7853b270-30ac-4fc0-8a46-c4b581d930b5",
+              "sourceStep": "/api/3/workflow_steps/c62c8798-edd3-4995-83c9-46cf42bf5cfb",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "d2a38664-1bfb-4e17-b077-40abc319885d"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "1ec0fad1-e9e9-42ac-8df0-976521f4422e",
+          "id": 1294,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "graylog"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Cluster Input States",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieve a input states of the cluster from Graylog.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1657797296,
+          "collection": "/api/3/workflow_collections/0096c7e4-a695-45a6-8ee7-1103852ca646",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/daad59e6-d02c-4d59-84f0-66bde54ce697",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "34cd09b0-432f-4085-900d-4ffd14d82172",
+                "title": "Graylog: Get Cluster Input States",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "daad59e6-d02c-4d59-84f0-66bde54ce697"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Cluster Input States",
+              "description": null,
+              "arguments": {
+                "name": "Graylog",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "graylog",
+                "operation": "get_cluster_input_states",
+                "operationTitle": "Get Cluster Input States",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "f26b2c48-9b02-4e9f-b790-60ace5d46341"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Cluster Input States",
+              "targetStep": "/api/3/workflow_steps/f26b2c48-9b02-4e9f-b790-60ace5d46341",
+              "sourceStep": "/api/3/workflow_steps/daad59e6-d02c-4d59-84f0-66bde54ce697",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "37569178-ecb4-4025-91f4-3c550601d3f3"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "7489562a-57ba-454e-a6b1-e07254859612",
+          "id": 1295,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "graylog"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Search Messages in Relative Timerange",
+          "aliasName": null,
+          "tag": null,
+          "description": "Search for a messages in a universal relative timerange from Graylog based on the query, and other input parameters that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1657797474,
+          "collection": "/api/3/workflow_collections/0096c7e4-a695-45a6-8ee7-1103852ca646",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/4fa706ca-8f2c-4cde-a8e4-1a402431470c",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "826e040d-cff8-4766-b405-30f18d3690d0",
+                "title": "Graylog: Search Messages in Relative Timerange",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "4fa706ca-8f2c-4cde-a8e4-1a402431470c"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Search Messages in Relative Timerange",
+              "description": null,
+              "arguments": {
+                "name": "Graylog",
+                "config": "",
+                "params": {
+                  "sort": true,
+                  "limit": 20,
+                  "query": "sample query",
+                  "fields": "",
+                  "filter": "",
+                  "offset": 0,
+                  "decorate": true,
+                  "time_range": "300s"
+                },
+                "version": "1.0.0",
+                "connector": "graylog",
+                "operation": "search_relative",
+                "operationTitle": "Search Messages in Relative Timerange",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "bd4b2224-bb0e-4eee-8b74-95e8858ced96"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Search Messages in Relative Timerange",
+              "targetStep": "/api/3/workflow_steps/bd4b2224-bb0e-4eee-8b74-95e8858ced96",
+              "sourceStep": "/api/3/workflow_steps/4fa706ca-8f2c-4cde-a8e4-1a402431470c",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "246f3403-ae97-4319-99c9-efd7a41ac29c"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "81e8fd14-e8e7-4e27-a030-651b9e9b0555",
+          "id": 1298,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "graylog"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Cluster Processing Status",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieve a processing status of the cluster from Graylog.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1657797346,
+          "collection": "/api/3/workflow_collections/0096c7e4-a695-45a6-8ee7-1103852ca646",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/64b74082-8499-413a-8bfe-5dbe984274c8",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "9ec83739-f109-4709-948b-8dbad91a6ade",
+                "title": "Graylog: Get Cluster Processing Status",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "64b74082-8499-413a-8bfe-5dbe984274c8"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Cluster Processing Status",
+              "description": null,
+              "arguments": {
+                "name": "Graylog",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "graylog",
+                "operation": "get_cluster_processing_status",
+                "operationTitle": "Get Cluster Processing Status",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "91d9524b-b1ec-496d-80a8-db4688205a6f"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Cluster Processing Status",
+              "targetStep": "/api/3/workflow_steps/91d9524b-b1ec-496d-80a8-db4688205a6f",
+              "sourceStep": "/api/3/workflow_steps/64b74082-8499-413a-8bfe-5dbe984274c8",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "5f1e2710-b37d-49b8-9995-48448457ff3e"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "88ea085f-c61a-4069-8e94-7cd6a9b70975",
+          "id": 1296,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "graylog"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Search Events",
+          "aliasName": null,
+          "tag": null,
+          "description": "Search for a events in Graylog based on the input parameters that you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1657797624,
+          "collection": "/api/3/workflow_collections/0096c7e4-a695-45a6-8ee7-1103852ca646",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/8d377ff5-3a32-4f24-b896-43ed99936e05",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "4e768ecf-8b3f-470f-a498-93d2a2ee808c",
+                "title": "Graylog: Search Events",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "8d377ff5-3a32-4f24-b896-43ed99936e05"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Search Events",
+              "description": null,
+              "arguments": {
+                "name": "Graylog",
+                "config": "",
+                "params": {
+                  "sort": true,
+                  "limit": 20,
+                  "query": "",
+                  "filter": "",
+                  "offset": 0,
+                  "time_range": "300s"
+                },
+                "version": "1.0.0",
+                "connector": "graylog",
+                "operation": "search_events",
+                "operationTitle": "Search Events",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "b9581a23-cf78-4432-b05a-5f29e6222468"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Search Events",
+              "targetStep": "/api/3/workflow_steps/b9581a23-cf78-4432-b05a-5f29e6222468",
+              "sourceStep": "/api/3/workflow_steps/8d377ff5-3a32-4f24-b896-43ed99936e05",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "71cb69b3-1c4b-4045-963a-f9fd0efdb63f"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "9be33be8-085a-48e4-b662-e06db86a4f1e",
+          "id": 1300,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "graylog"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Clusters",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves a list of clusters from Graylog.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1657797187,
+          "collection": "/api/3/workflow_collections/0096c7e4-a695-45a6-8ee7-1103852ca646",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/5a5c5f59-3e71-411a-a04d-4ad347d3476a",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Clusters",
+              "description": null,
+              "arguments": {
+                "name": "Graylog",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "graylog",
+                "operation": "get_clusters",
+                "operationTitle": "Get Clusters",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "4b40ec16-91d4-4251-a952-00521c6cfc0d"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "268c55aa-1b1b-424d-a4b0-68d5550280b3",
+                "title": "Graylog: Get Clusters",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "5a5c5f59-3e71-411a-a04d-4ad347d3476a"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Clusters",
+              "targetStep": "/api/3/workflow_steps/4b40ec16-91d4-4251-a952-00521c6cfc0d",
+              "sourceStep": "/api/3/workflow_steps/5a5c5f59-3e71-411a-a04d-4ad347d3476a",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "1eba7f7b-f415-480f-943d-35de461b6772"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "af5d73c3-11bf-4468-8eb5-051136a1021b",
+          "id": 1293,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "graylog"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Indexer Cluster Health",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieve a indexer of the cluster health from Graylog.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1657797389,
+          "collection": "/api/3/workflow_collections/0096c7e4-a695-45a6-8ee7-1103852ca646",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/cda2505d-ce01-42fd-8d3d-5a26a6cc7b88",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Indexer Cluster Health",
+              "description": null,
+              "arguments": {
+                "name": "Graylog",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "graylog",
+                "operation": "get_indexer_cluster_health",
+                "operationTitle": "Get Indexer Cluster Health",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "0980e52e-33fa-4535-979d-78f7b51e8299"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "ef2a21d6-132e-4d57-8dc4-8ee6291210a4",
+                "title": "Graylog: Get Indexer Cluster Health",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "cda2505d-ce01-42fd-8d3d-5a26a6cc7b88"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Indexer Cluster Health",
+              "targetStep": "/api/3/workflow_steps/0980e52e-33fa-4535-979d-78f7b51e8299",
+              "sourceStep": "/api/3/workflow_steps/cda2505d-ce01-42fd-8d3d-5a26a6cc7b88",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "ca521ffc-7af0-4c2c-ab36-9ca50fe75a0e"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "e5e9f67e-125a-4409-b93e-0561e91bda07",
+          "id": 1297,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "graylog"
+          ]
+        }
+      ]
+    }
+  ],
+  "exported_tags": [
+    "graylog"
+  ]
+}
