@@ -48,7 +48,7 @@ class Graylog(object):
                 'Accept': 'application/json'
             }
             logger.debug("Endpoint {0}".format(url))
-            response = requests.request(method, url, data=data, params=params, auth=(self.username, self.password),
+            response = requests.request(method, url, json=data, params=params, auth=(self.username, self.password),
                                         headers=headers,
                                         verify=self.verify_ssl)
             logger.debug("response_content {0}:{1}".format(response.status_code, response.content))
@@ -90,7 +90,7 @@ def check_payload(payload):
 
 def get_clusters(config, params):
     gl = Graylog(config)
-    endpoint = 'clusters'
+    endpoint = 'cluster'
     try:
         response = gl.make_rest_call(endpoint, 'GET')
         return response
@@ -101,7 +101,7 @@ def get_clusters(config, params):
 
 def get_cluster_node_jvm(config, params):
     gl = Graylog(config)
-    endpoint = 'cluster/{0}/jvm'.format(params.get('node_id'))
+    endpoint = 'cluster/{0}/jvm'.format(params.get('id'))
     try:
         response = gl.make_rest_call(endpoint, 'GET')
         return response
@@ -123,7 +123,7 @@ def get_cluster_input_states(config, params):
 
 def get_cluster_processing_status(config, params):
     gl = Graylog(config)
-    endpoint = '/cluster/processing/status'
+    endpoint = 'cluster/processing/status'
     try:
         response = gl.make_rest_call(endpoint, 'GET')
         return response
@@ -132,9 +132,73 @@ def get_cluster_processing_status(config, params):
         raise ConnectorError("{0}".format(str(err)))
 
 
+def get_cluster_metrics(config, params):
+    gl = Graylog(config)
+    endpoint = 'cluster/metrics/multiple'
+    metrics = params.get('metrics')
+    if metrics:
+        metrics = metrics.split(",")
+    else:
+        metrics = []
+    try:
+        payload = {
+            "metrics": metrics
+        }
+        response = gl.make_rest_call(endpoint, 'POST', data=payload)
+        return response
+    except Exception as err:
+        logger.exception("{0}".format(str(err)))
+        raise ConnectorError("{0}".format(str(err)))
+
+
+def get_cluster_node_metrics(config, params):
+    gl = Graylog(config)
+    endpoint = 'cluster/{0}/metrics/multiple'.format(params.get('id'))
+    metrics = params.get('metrics')
+    if metrics:
+        metrics = metrics.split(",")
+    else:
+        metrics = []
+    try:
+        payload = {
+            "metrics": metrics
+        }
+        response = gl.make_rest_call(endpoint, 'POST', data=payload)
+        return response
+    except Exception as err:
+        logger.exception("{0}".format(str(err)))
+        raise ConnectorError("{0}".format(str(err)))
+
+
+def get_cluster_node_metrics_names(config, params):
+    gl = Graylog(config)
+    try:
+        endpoint = 'cluster/{0}/metrics/names'.format(params.get('id'))
+        response = gl.make_rest_call(endpoint, 'GET')
+        return response
+    except Exception as err:
+        logger.exception("{0}".format(str(err)))
+        raise ConnectorError("{0}".format(str(err)))
+
+
+def get_cluster_lookup_tables(config, params):
+    gl = Graylog(config)
+    endpoint = 'cluster/system/lookup/tables/{0}/purge'.format(params.get('id'))
+    try:
+        payload = {
+            'key': params.get('key')
+        }
+        payload = check_payload(payload)
+        response = gl.make_rest_call(endpoint, 'POST', data=json.dumps(payload))
+        return response
+    except Exception as err:
+        logger.exception("{0}".format(str(err)))
+        raise ConnectorError("{0}".format(str(err)))
+
+
 def get_indexer_cluster_health(config, params):
     gl = Graylog(config)
-    endpoint = '/system/indexer/cluster/health'
+    endpoint = 'system/indexer/cluster/health'
     try:
         response = gl.make_rest_call(endpoint, 'GET')
         return response
@@ -145,9 +209,9 @@ def get_indexer_cluster_health(config, params):
 
 def search_relative(config, params):
     gl = Graylog(config)
-    endpoint = '/search/universal/relative'
+    endpoint = 'search/universal/relative'
     fields = params.get('fields')
-    if not isinstance(fields, list):
+    if fields:
         fields = fields.split(",")
     try:
         payload = {
@@ -161,7 +225,7 @@ def search_relative(config, params):
             'decorate': params.get('decorate')
         }
         payload = check_payload(payload)
-        response = gl.make_rest_call(endpoint, 'POST', params=payload)
+        response = gl.make_rest_call(endpoint, 'GET', params=payload)
         return response
     except Exception as err:
         logger.exception("{0}".format(str(err)))
@@ -170,9 +234,9 @@ def search_relative(config, params):
 
 def search_absolute(config, params):
     gl = Graylog(config)
-    endpoint = '/search/universal/absolute'
+    endpoint = 'search/universal/absolute'
     fields = params.get('fields')
-    if not isinstance(fields, list):
+    if fields:
         fields = fields.split(",")
     try:
         payload = {
@@ -187,7 +251,7 @@ def search_absolute(config, params):
             'decorate': params.get('decorate')
         }
         payload = check_payload(payload)
-        response = gl.make_rest_call(endpoint, 'POST', params=payload)
+        response = gl.make_rest_call(endpoint, 'GET', params=payload)
         return response
     except Exception as err:
         logger.exception("{0}".format(str(err)))
@@ -209,7 +273,49 @@ def search_events(config, params):
                    }
                    }
         payload = check_payload(payload)
-        response = gl.make_rest_call(endpoint, 'POST', data=json.dumps(payload))
+        response = gl.make_rest_call(endpoint, 'POST', data=payload)
+        return response
+    except Exception as err:
+        logger.exception("{0}".format(str(err)))
+        raise ConnectorError("{0}".format(str(err)))
+
+
+def get_alerts(config, params):
+    gl = Graylog(config)
+    endpoint = 'streams/alerts'
+    try:
+        payload = check_payload(params)
+        response = gl.make_rest_call(endpoint, 'GET', params=payload)
+        return response
+    except Exception as err:
+        logger.exception("{0}".format(str(err)))
+        raise ConnectorError("{0}".format(str(err)))
+
+
+def get_streams(config, params):
+    gl = Graylog(config)
+    endpoint = 'streams'
+    try:
+        response = gl.make_rest_call(endpoint, 'GET')
+        return response
+    except Exception as err:
+        logger.exception("{0}".format(str(err)))
+        raise ConnectorError("{0}".format(str(err)))
+
+
+def get_system_lookup_tables(config, params):
+    gl = Graylog(config)
+    endpoint = 'system/lookup/tables'
+    try:
+        payload = {
+            'per_page': params.get('per_page'),
+            'sort': params.get('sort'),
+            'order': sort_dict.get(params.get('order')),
+            'query': params.get('query'),
+            'resolve': params.get('resolve')
+        }
+        payload = check_payload(payload)
+        response = gl.make_rest_call(endpoint, 'GET', params=payload)
         return response
     except Exception as err:
         logger.exception("{0}".format(str(err)))
@@ -233,5 +339,13 @@ operations = {
     'get_indexer_cluster_health': get_indexer_cluster_health,
     'search_relative': search_relative,
     'search_absolute': search_absolute,
-    'search_events': search_events
+    'search_events': search_events,
+    'get_alerts': get_alerts,
+    'get_cluster_lookup_tables': get_cluster_lookup_tables,
+    'get_streams': get_streams,
+    'get_cluster_metrics': get_cluster_metrics,
+    'get_cluster_node_metrics': get_cluster_node_metrics,
+    'get_cluster_node_metrics_names': get_cluster_node_metrics_names,
+    'get_system_lookup_tables': get_system_lookup_tables
+
 }
