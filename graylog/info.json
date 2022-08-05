@@ -166,7 +166,34 @@
         }
       ],
       "output_schema": {
-        "events": [],
+        "events": [
+          {
+            "event": {
+              "id": "",
+              "event_definition_type": "",
+              "event_definition_id": "",
+              "origin_context": "",
+              "timestamp": "",
+              "timestamp_processing": "",
+              "timerange_start": "",
+              "timerange_end": "",
+              "streams": [
+              ],
+              "source_streams": [
+              ],
+              "message": "",
+              "source": "",
+              "key_tuple": [],
+              "key": "",
+              "priority": "",
+              "alert": "",
+              "fields": {},
+              "group_by_fields": {}
+            },
+            "index_name": "",
+            "index_type": ""
+          }
+        ],
         "used_indices": [
         ],
         "parameters": {
@@ -427,16 +454,44 @@
             "end": "",
             "calculated_at": "",
             "took_ms": ""
-          },
-          {
-            "index_name": "",
-            "begin": "",
-            "end": "",
-            "calculated_at": "",
-            "took_ms": ""
           }
         ],
-        "messages": [],
+        "messages": [
+          {
+            "highlight_ranges": {},
+            "message": {
+              "sequence_nr": "",
+              "ingest_time": "",
+              "took_ms": "",
+              "source": "",
+              "ingest_time_minute": "",
+              "gl2_source_input": "",
+              "ingest_time_day": "",
+              "http_method": "",
+              "ingest_time_hour": "",
+              "action": "",
+              "gl2_source_node": "",
+              "ingest_time_epoch": "",
+              "timestamp": "",
+              "controller": "",
+              "gl2_accounted_message_size": "",
+              "resource": "",
+              "ticks": "",
+              "streams": [
+              ],
+              "gl2_message_id": "",
+              "message": "",
+              "ingest_time_second": "",
+              "ingest_time_month": "",
+              "user_id": "",
+              "_id": "",
+              "ingest_time_year": "",
+              "http_response_code": ""
+            },
+            "index": "",
+            "decoration_stats": ""
+          }
+        ],
         "fields": [],
         "time": "",
         "total_results": "",
