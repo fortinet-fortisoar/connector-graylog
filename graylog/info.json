@@ -13,7 +13,7 @@
   "ingestion_modes": [
     "scheduled"
   ],
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/graylog/373/graylog-v1-0-0",
   "configuration": {
     "fields": [
       {
@@ -66,25 +66,25 @@
       "parameters": [
         {
           "title": "Limit",
-          "description": "(Optional) Specify the number of results this operation returns, per page, in the response. By Default, this value is set as 300.",
+          "description": "Specify the maximum number of results this operation should return, per page, in the response. By default, this value is set to 300.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "integer",
           "name": "limit",
-          "tooltip": "(Optional) Specify the number of results this operation returns, per page, in the response. By Default, this value is set as 300.",
+          "tooltip": "Specify the maximum number of results this operation should return, per page, in the response. By default, this value is set to 300.",
           "value": 300
         },
         {
           "title": "Since",
-          "description": "(Optional) Time range based on which you want to retrieve alerts from Graylog. By Default, this value is set as 0.",
+          "description": "Specify the time range based on which you want to retrieve alerts from Graylog. By default, this value is set to 0.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "integer",
           "name": "since",
-          "tooltip": "Specify in UNIX timestamp.",
-          "value": "0"
+          "tooltip": "Specify the time range based on which you want to retrieve alerts from Graylog. By default, this value is set to 0.",
+          "value": 0
         }
       ],
       "output_schema": {
@@ -95,73 +95,73 @@
     {
       "operation": "search_events",
       "title": "Search Events",
-      "description": "Search for a events in Graylog based on the input parameters that you have specified.",
+      "description": "Search for events in Graylog based on the time range and other input parameters you have specified.",
       "category": "investigation",
       "annotation": "search_events",
       "enabled": true,
       "parameters": [
         {
           "title": "Time Range",
-          "description": "Time range based on which you want to retrieve events from Graylog. By Default, this value is set as 300.",
+          "description": "Specify the time range based on which you want to retrieve events from Graylog. By default, this value is set to 300.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "time_range",
-          "tooltip": "Time range based on which you want to retrieve events from Graylog. By Default, this value is set as 300",
+          "tooltip": "Specify the time range based on which you want to retrieve events from Graylog. By default, this value is set to 300.",
           "value": "300"
         },
         {
           "title": "Query",
-          "description": "(Optional) Specify a query based on which you want to retrieve events from Graylog.",
+          "description": "(Optional) Specify the query using which you want to retrieve events from Graylog.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "query",
-          "tooltip": "(Optional) Specify a query based on which you want to retrieve events from Graylog."
+          "tooltip": "(Optional) Specify the query using which you want to retrieve events from Graylog."
         },
         {
           "title": "Filter",
-          "description": "(Optional) Specify a filter for which you want to filter the events according to the values of certain attributes in Graylog.",
+          "description": "(Optional) Specify a filter, i.e., specific attribute values, using which you want to filter events retrieved from Graylog.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "filter",
-          "tooltip": "(Optional)Specify a filter for which you want to filter the events according to the values of certain attributes in Graylog."
+          "tooltip": "(Optional) Specify a filter, i.e., specific attribute values, using which you want to filter events retrieved from Graylog."
         },
         {
           "title": "Limit",
-          "description": "(Optional) Specify the number of results this operation returns, per page, in the response. By Default, this value is set as 20.",
+          "description": "(Optional) Specify the maximum number of results this operation should return, per page, in the response. By default, this value is set to 20.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "integer",
           "name": "limit",
-          "tooltip": "(Optional) Specify the number of results this operation returns, per page, in the response. By Default, this value is set as 20.",
+          "tooltip": "(Optional) Specify the maximum number of results this operation should return, per page, in the response. By default, this value is set to 20.",
           "value": 20
         },
         {
           "title": "Offset",
-          "description": "(Optional) Index of the first item to be returned by this operation. This parameter is useful if you want to get a subset of records, say users starting from the 10th user. By default, this is set as 0.",
+          "description": "(Optional) Index of the first item to be returned by this operation. This parameter is useful if you want to get a subset of records, say events starting from the 10th event. By default, this is set as 0.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "integer",
           "name": "offset",
-          "tooltip": "(Optional) Index of the first item to be returned by this operation. This parameter is useful if you want to get a subset of records, say users starting from the 10th user. By default, this is set as 0.",
+          "tooltip": "(Optional) Index of the first item to be returned by this operation. This parameter is useful if you want to get a subset of records, say events starting from the 10th event. By default, this is set as 0.",
           "value": 0
         },
         {
           "title": "Order By",
-          "description": "(Optional) Select this option (default is selected) to sort the results in ascending from which you want to retrieve events from Graylog.",
+          "description": "(Optional) Select this option (default is selected) to sort the events retrieved from Graylog in ascending order.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "checkbox",
           "name": "sort",
-          "tooltip": "(Optional) Select this option (default is selected) to sort the results in ascending from which you want to retrieve events from Graylog.",
+          "tooltip": "(Optional) Select this option (default is selected) to sort the events retrieved from Graylog in ascending order.",
           "value": true
         }
       ],
@@ -222,94 +222,94 @@
     {
       "operation": "search_relative",
       "title": "Search Relative",
-      "description": "Search for a messages in a universal relative timerange from Graylog based on the query, and other input parameters that you have specified.",
+      "description": "Search for messages in a universal relative time range in Graylog based on the query and other input parameters you have specified.",
       "category": "investigation",
       "annotation": "search_relative",
       "enabled": true,
       "parameters": [
         {
           "title": "Query",
-          "description": "Specify a lucene syntax query based on which you want to search for a messages in a relative timerange from Graylog.",
+          "description": "Specify a Lucene syntax query based on which you want to search for messages in the relative time range in Graylog.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "query",
-          "tooltip": "Specify a lucene syntax query based on which you want to search for a messages."
+          "tooltip": "Specify a Lucene syntax query based on which you want to search for messages in the relative time range in Graylog."
         },
         {
           "title": "Time Range",
-          "description": "(Optional) Time range based on which you want to search for a messages in a relative timerange from Graylog. By Default, this value is set as 300.",
+          "description": "(Optional) Specify the time range based on which you want to search for messages in the relative time range in Graylog. By default, this value is set to 300.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "time_range",
-          "tooltip": "(Optional) Time range based on which you want to search for a messages in a relative timerange from Graylog. By Default, this value is set as 300",
+          "tooltip": "(Optional) Specify the time range based on which you want to search for messages in the relative time range in Graylog. By default, this value is set to 300.",
           "value": "300"
         },
         {
           "title": "Filter",
-          "description": "(Optional) Specify a filter for which you want to filter the messages according to the values of certain attributes in Graylog.",
+          "description": "(Optional) Specify a filter, i.e., specific attribute values, using which you want to filter messages being searched in Graylog.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "filter",
-          "tooltip": "(Optional)Specify a filter for which you want to filter the messages according to the values of certain attributes in Graylog."
+          "tooltip": "(Optional) Specify a filter, i.e., specific attribute values, using which you want to filter messages being searched in Graylog."
         },
         {
           "title": "Limit",
-          "description": "(Optional) Specify the number of results this operation returns, per page, in the response. By Default, this value is set as 20.",
+          "description": "(Optional) Specify the maximum number of results this operation should return, per page, in the response. By default, this value is set to 20.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "integer",
           "name": "limit",
-          "tooltip": "(Optional) Specify the number of results this operation returns, per page, in the response. By Default, this value is set as 20.",
+          "tooltip": "(Optional) Specify the maximum number of results this operation should return, per page, in the response. By default, this value is set to 20.",
           "value": 20
         },
         {
           "title": "Offset",
-          "description": "(Optional) Index of the first item to be returned by this operation. This parameter is useful if you want to get a subset of records, say users starting from the 10th user. By default, this is set as 0.",
+          "description": "(Optional) Index of the first item to be returned by this operation. This parameter is useful if you want to get a subset of records, say messages starting from the 10th message. By default, this is set as 0.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "integer",
           "name": "offset",
-          "tooltip": "(Optional) Index of the first item to be returned by this operation. This parameter is useful if you want to get a subset of records, say users starting from the 10th user. By default, this is set as 0.",
+          "tooltip": "(Optional) Index of the first item to be returned by this operation. This parameter is useful if you want to get a subset of records, say messages starting from the 10th message. By default, this is set as 0.",
           "value": 0
         },
         {
           "title": "Fields to Retrieve",
-          "description": "(Optional) Specify the comma separated list of fields to retrieve the mentioned attributes only.",
+          "description": "(Optional) Specify a comma-separated list of fields to retrieve only the mentioned attributes from Graylog.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "fields",
-          "tooltip": "(Optional) Specify the comma separated list of fields to retrieve the mentioned attributes only."
+          "tooltip": "(Optional) Specify a comma-separated list of fields to retrieve only the mentioned attributes from Graylog."
         },
         {
           "title": "Order By",
-          "description": "(Optional) Select this option (default is selected) to sort the results in ascending from which you want to retrieve messages from Graylog.",
+          "description": "(Optional) Select this option (default is selected) to sort the events retrieved from Graylog in ascending order.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "checkbox",
           "name": "sort",
-          "tooltip": "(Optional) Select this option (default is selected) to sort the results in ascending from which you want to retrieve messages from Graylog.",
+          "tooltip": "(Optional) Select this option (default is selected) to sort the events retrieved from Graylog in ascending order.",
           "value": true
         },
         {
           "title": "Decorate",
-          "description": "(Optional) Select this option (default is selected) to run decorators on search result in Graylog.",
+          "description": "(Optional) Select this option (default is selected) to run decorators on the search results in Graylog.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "checkbox",
           "name": "decorate",
-          "tooltip": "(Optional) Select this option (default is selected) to run decorators on search result in Graylog.",
+          "tooltip": "(Optional) Select this option (default is selected) to run decorators on the search results in Graylog.",
           "value": true
         }
       ],
@@ -344,103 +344,103 @@
     {
       "operation": "search_absolute",
       "title": "Search Absolute",
-      "description": "Search for a messages in a universal absolute timerange from Graylog based on the query, and other input parameters that you have specified.",
+      "description": "Search for messages in a universal absolute time range in Graylog based on the query and other input parameters you have specified.",
       "category": "investigation",
       "annotation": "search_absolute",
       "enabled": true,
       "parameters": [
         {
           "title": "Query",
-          "description": "Specify a lucene syntax query based on which you want to search for a messages in a absolute timerange from Graylog.",
+          "description": "Specify a Lucene syntax query based on which you want to search for messages in the absolute time range in Graylog.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "query",
-          "tooltip": "Specify a lucene syntax query based on which you want to search for a messages."
+          "tooltip": "Specify a Lucene syntax query based on which you want to search for messages in the absolute time range in Graylog."
         },
         {
           "title": "Start Time",
           "name": "start_time",
           "type": "datetime",
-          "description": "Specify the starting DateTime from when you want to retrieve messages from Graylog.",
+          "description": "Specify the starting DateTime from when you want to search for messages in Graylog.",
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "Specify the starting DateTime from when you want to retrieve messages from Graylog."
+          "tooltip": "Specify the starting DateTime from when you want to search for messages in Graylog."
         },
         {
           "title": "End Time",
           "name": "end_time",
           "type": "datetime",
-          "description": "Specify the ending DateTime till when you want to retrieve messages from Graylog.",
+          "description": "Specify the ending DateTime till when you want to search for messages in Graylog.",
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "Specify the ending DateTime till when you want to retrieve messages from Graylog."
+          "tooltip": "Specify the ending DateTime till when you want to search for messages in Graylog."
         },
         {
           "title": "Filter",
-          "description": "(Optional) Specify a filter for which you want to filter the messages according to the values of certain attributes in Graylog.",
+          "description": "(Optional) Specify a filter, i.e., specific attribute values, using which you want to filter messages being searched in Graylog.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "filter",
-          "tooltip": "(Optional)Specify a filter for which you want to filter the messages according to the values of certain attributes in Graylog."
+          "tooltip": "(Optional) Specify a filter, i.e., specific attribute values, using which you want to filter messages being searched in Graylog."
         },
         {
           "title": "Limit",
-          "description": "(Optional) Specify the number of results this operation returns, per page, in the response. By Default, this value is set as 20.",
+          "description": "(Optional) Specify the maximum number of results this operation should return, per page, in the response. By default, this value is set to 20.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "integer",
           "name": "limit",
-          "tooltip": "(Optional) Specify the number of results this operation returns, per page, in the response. By Default, this value is set as 20.",
+          "tooltip": "(Optional) Specify the maximum number of results this operation should return, per page, in the response. By default, this value is set to 20.",
           "value": 20
         },
         {
           "title": "Offset",
-          "description": "(Optional) Index of the first item to be returned by this operation. This parameter is useful if you want to get a subset of records, say users starting from the 10th user. By default, this is set as 0.",
+          "description": "(Optional) Index of the first item to be returned by this operation. This parameter is useful if you want to get a subset of records, say messages starting from the 10th message. By default, this is set as 0.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "integer",
           "name": "offset",
-          "tooltip": "(Optional) Index of the first item to be returned by this operation. This parameter is useful if you want to get a subset of records, say users starting from the 10th user. By default, this is set as 0.",
+          "tooltip": "(Optional) Index of the first item to be returned by this operation. This parameter is useful if you want to get a subset of records, say messages starting from the 10th message. By default, this is set as 0.",
           "value": 0
         },
         {
           "title": "Fields to Retrieve",
-          "description": "(Optional) Specify the comma separated list of fields to retrieve the mentioned attributes only.",
+          "description": "(Optional) Specify a comma-separated list of fields to retrieve only the mentioned attributes from Graylog.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "fields",
-          "tooltip": "(Optional) Specify the comma separated list of fields to retrieve the mentioned attributes only."
+          "tooltip": "(Optional) Specify a comma-separated list of fields to retrieve only the mentioned attributes from Graylog."
         },
         {
           "title": "Order By",
-          "description": "(Optional) Select this option (default is selected) to sort the results in ascending from which you want to retrieve messages from Graylog.",
+          "description": "(Optional) Select this option (default is selected) to sort the events retrieved from Graylog in ascending order.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "checkbox",
           "name": "sort",
-          "tooltip": "(Optional) Select this option (default is selected) to sort the results in ascending from which you want to retrieve messages from Graylog.",
+          "tooltip": "(Optional) Select this option (default is selected) to sort the events retrieved from Graylog in ascending order.",
           "value": true
         },
         {
           "title": "Decorate",
-          "description": "(Optional) Select this option (default is selected) to run decorators on search result in Graylog.",
+          "description": "(Optional) Select this option (default is selected) to run decorators on the search results in Graylog.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "checkbox",
           "name": "decorate",
-          "tooltip": "(Optional) Select this option (default is selected) to run decorators on search result in Graylog.",
+          "tooltip": "(Optional) Select this option (default is selected) to run decorators on the search results in Graylog.",
           "value": true
         }
       ],
@@ -513,20 +513,20 @@
     {
       "operation": "get_cluster_node_jvm",
       "title": "Get Cluster Node JVM",
-      "description": "Retrieve a JVM information of the node from Graylog based on the node ID you have specified.",
+      "description": "Retrieves JVM information of a specific node in Graylog based on the node ID you have specified.",
       "category": "investigation",
       "annotation": "get_cluster_node_jvm",
       "enabled": true,
       "parameters": [
         {
           "title": "Node ID",
-          "description": "ID of the node for which you want to retrieve a JVM details from Graylog.",
+          "description": "Specify the ID of the node for which you want to retrieve JVM details from Graylog.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "id",
-          "tooltip": "Specify ID of the node."
+          "tooltip": "Specify the ID of the node."
         }
       ],
       "output_schema": {
@@ -558,7 +558,7 @@
     {
       "operation": "get_cluster_input_states",
       "title": "Get Cluster Input States",
-      "description": "Retrieve a input states of the cluster from Graylog.",
+      "description": "Retrieves the input states of the cluster from Graylog.",
       "category": "investigation",
       "annotation": "get_cluster_input_states",
       "enabled": true,
@@ -568,7 +568,7 @@
     {
       "operation": "get_cluster_processing_status",
       "title": "Get Cluster Processing Status",
-      "description": "Retrieve a processing status of the cluster from Graylog.",
+      "description": "Retrieves the processing status of the cluster from Graylog.",
       "category": "investigation",
       "annotation": "get_cluster_processing_status",
       "enabled": true,
@@ -578,20 +578,20 @@
     {
       "operation": "get_cluster_metrics",
       "title": "Get Cluster Metrics",
-      "description": "Retrieve all metrics of all nodes in the cluster from Graylog.",
+      "description": "Retrieve all the metrics or specific metrics for all nodes in the cluster from Graylog based on the comma-separated list of metrics you have specified.",
       "category": "investigation",
       "annotation": "get_cluster_metrics",
       "enabled": true,
       "parameters": [
         {
           "title": "Metrics",
-          "description": "Specify a comma-separated list of metrics based on which you want to retrieve metrics from Graylog.",
+          "description": "(Optional) Specify a comma-separated list of metrics using which you want to retrieve metrics for the cluster in Graylog. Note: If you do not specify any list, then all the metrics for all nodes in the cluster are retrieved from Graylog.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "metrics",
-          "tooltip": "Specify a comma-separated list of metrics based on which you want to retrieve metrics from Graylog.",
+          "tooltip": "(Optional) Specify a comma-separated list of metrics using which you want to retrieve metrics for the cluster in Graylog. Note: If you do not specify any list, then all the metrics for all nodes in the cluster are retrieved from Graylog.",
           "placeholder": "e.g. jvm.threads.waiting.count, org.graylog2.traffic.decoded"
         }
       ],
@@ -600,30 +600,30 @@
     {
       "operation": "get_cluster_node_metrics",
       "title": "Get Cluster Node Metrics",
-      "description": "Retrieve all metrics for a specific node in the cluster from Graylog.",
+      "description": "Retrieve all the metrics or specific metrics for a specific node in the cluster from Graylog based on the node ID and a comma-separated list of metrics you have specified.",
       "category": "investigation",
       "annotation": "get_cluster_node_metrics",
       "enabled": true,
       "parameters": [
         {
           "title": "Node ID",
-          "description": "Node ID based on which you want to retrieve the metrics from the Graylog.",
+          "description": "Specify the ID of the node for which you want to retrieve metrics from Graylog.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "id",
-          "tooltip": "Node ID based on which you want to retrieve the metrics from the Graylog."
+          "tooltip": "Specify the ID of the node."
         },
         {
           "title": "Metrics",
-          "description": "Specify a comma-separated list of metrics based on which you want to retrieve metrics from Graylog.",
+          "description": "(Optional) Specify a comma-separated list of metrics using which you want to retrieve metrics for the cluster in Graylog. Note: If you do not specify any list, then all the metrics for the specific node in the cluster are retrieved from Graylog.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "metrics",
-          "tooltip": "Specify a comma-separated list of metrics based on which you want to retrieve metrics from Graylog.",
+          "tooltip": "(Optional) Specify a comma-separated list of metrics using which you want to retrieve metrics for the cluster in Graylog. Note: If you do not specify any list, then all the metrics for the specific node in the cluster are retrieved from Graylog.",
           "placeholder": "e.g. jvm.threads.waiting.count, org.graylog2.traffic.decoded"
         }
       ],
@@ -661,20 +661,20 @@
     {
       "operation": "get_cluster_node_metrics_names",
       "title": "Get Cluster Node Metrics Names",
-      "description": "Retrieve all metrics keys/names from node in the cluster from Graylog.",
+      "description": "Retrieves all metrics keys/names from a specific node in the cluster in Graylog based on the node ID you have specified.",
       "category": "investigation",
       "annotation": "get_cluster_node_metrics_names",
       "enabled": true,
       "parameters": [
         {
           "title": "Node ID",
-          "description": "Node ID based on which you want to retrieve the keys/names of metrics from the Graylog.",
+          "description": "Specify the ID of the node for which you want to retrieve keys/names of metrics for the cluster in Graylog.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "id",
-          "tooltip": "Node ID based on which you want to retrieve the keys/name of metrics from the Graylog."
+          "tooltip": "Specify the ID of the node."
         }
       ],
       "output_schema": {
@@ -684,30 +684,30 @@
     {
       "operation": "get_cluster_lookup_tables",
       "title": "Get Clusters Lookup Tables",
-      "description": "Retrieves a list of clusters lookup tables from Graylog.",
+      "description": "Retrieves a list of clusters lookup tables from Graylog based on the node ID and other input parameters you have specified.",
       "category": "investigation",
       "annotation": "get_cluster_lookup_tables",
       "enabled": true,
       "parameters": [
         {
           "title": "ID/Name",
-          "description": "Specify a ID or name of the cluster based on which you want to retrieve cluster lookup tables from Graylog.",
+          "description": "Specify the ID or name of the node for which you want to retrieve cluster lookup tables from Graylog.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "id",
-          "tooltip": "Specify a ID or name of the cluster based on which you want to retrieve cluster lookup tables from Graylog."
+          "tooltip": "Specify the ID or name of the node for which you want to retrieve cluster lookup tables from Graylog."
         },
         {
           "title": "Query",
-          "description": "Specify a query based on which you want to retrieve cluster lookup tables from Graylog.",
+          "description": "(Optional) Specify a Lucene syntax query based on which you want to filter cluster lookup tables retrieved from Graylog.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "key",
-          "tooltip": "Specify a query based on which you want to retrieve cluster lookup tables from Graylog."
+          "tooltip": "(Optional) Specify a Lucene syntax query based on which you want to filter cluster lookup tables retrieved from Graylog."
         }
       ],
       "output_schema": {}
@@ -715,7 +715,7 @@
     {
       "operation": "get_indexer_cluster_health",
       "title": "Get Indexer Cluster Health",
-      "description": "Retrieve a indexer of the cluster health from Graylog.",
+      "description": "Retrieves an indexer of the cluster health from Graylog.",
       "category": "investigation",
       "annotation": "get_indexer_cluster_health",
       "enabled": true,
@@ -733,7 +733,7 @@
     {
       "operation": "get_streams",
       "title": "Get Streams",
-      "description": "Retrieves a list of streams from Graylog.",
+      "description": "Retrieves a list of all streams from Graylog.",
       "category": "investigation",
       "annotation": "get_streams",
       "enabled": true,
@@ -769,63 +769,63 @@
     {
       "operation": "get_system_lookup_tables",
       "title": "Get System Lookup Tables",
-      "description": "Retrieves a list of system lookup tables from Graylog.",
+      "description": "Retrieves a list of system lookup tables from Graylog based on the filter and other input parameters you have specified.",
       "category": "investigation",
       "annotation": "get_system_lookup_tables",
       "enabled": true,
       "parameters": [
         {
           "title": "Filter",
-          "description": "Specify a filter for which you want to filter the lookup tables according to the certain attributes in Graylog.",
+          "description": "Specify a filter, i.e., specific attribute values, using which you want to filter system lookup tables retrieved from Graylog.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "sort",
-          "tooltip": "Specify a filter for which you want to filter the lookup tables according to the certain attributes in Graylog.",
+          "tooltip": "Specify a filter, i.e., specific attribute values, using which you want to filter system lookup tables retrieved from Graylog.",
           "placeholder": "e.g. title"
         },
         {
           "title": "Limit",
-          "description": "(Optional) Specify the number of results this operation returns, per page, in the response. By Default, this value is set as 50.",
+          "description": "(Optional) Specify the maximum number of results this operation should return, per page, in the response. By default, this value is set to 50.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "integer",
           "name": "per_page",
-          "tooltip": "(Optional) Specify the number of results this operation returns, per page, in the response. By Default, this value is set as 50.",
+          "tooltip": "(Optional) Specify the maximum number of results this operation should return, per page, in the response. By default, this value is set to 50.",
           "value": 50
         },
         {
           "title": "Order By",
-          "description": "(Optional) Select this option (default is selected) to sort the results in ascending from which you want to retrieve messages from Graylog.",
+          "description": "(Optional) Select this option (default is selected) to sort the system lookup tables retrieved from Graylog in ascending order.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "checkbox",
           "name": "order",
-          "tooltip": "(Optional) Select this option (default is selected) to sort the results in ascending from which you want to retrieve messages from Graylog.",
+          "tooltip": "(Optional) Select this option (default is selected) to sort the system lookup tables retrieved from Graylog in ascending order.",
           "value": true
         },
         {
           "title": "Query",
-          "description": "(Optional) Specify a query based on which you want to retrieve system lookup tables from Graylog.",
+          "description": "(Optional) Specify a Lucene syntax query based on which you want to filter system lookup tables retrieved from Graylog.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "query",
-          "tooltip": "(Optional) Specify a query based on which you want to retrieve system lookup tables from Graylog."
+          "tooltip": "(Optional) Specify a Lucene syntax query based on which you want to filter system lookup tables retrieved from Graylog."
         },
         {
           "title": "Resolved",
-          "description": "(Optional) Select this option (default is not selected) to retrieve the resolve lookup tables from Graylog.",
+          "description": "(Optional) Select this option (default is not selected) to retrieve only the resolved lookup tables from Graylog.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "checkbox",
           "name": "resolve",
-          "tooltip": "(Optional) Select this option (default is not selected) to retrieve the resolve lookup tables from Graylog.",
+          "tooltip": "(Optional) Select this option (default is not selected) to retrieve only the resolved lookup tables from Graylog.",
           "value": false
         }
       ],
